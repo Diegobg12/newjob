@@ -1,2 +1,2 @@
 # todo
-Backen of todo project Django API.
+Backend todo project Django API.
