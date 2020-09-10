@@ -1,0 +1,620 @@
+openapi: 3.0.2
+info:
+  title: ''
+  version: ''
+paths:
+  /api/v1/:
+    get:
+      operationId: listTodos
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id:
+                      type: integer
+                      readOnly: true
+                    title:
+                      type: string
+                      nullable: true
+                      maxLength: 200
+                    notes:
+                      type: string
+                      nullable: true
+                      maxLength: 250
+                    startDate:
+                      type: string
+                      format: date
+                      nullable: true
+                    dueDate:
+                      type: string
+                      format: date
+                      nullable: true
+                    completed:
+                      type: boolean
+                      nullable: true
+                    starred:
+                      type: boolean
+                      nullable: true
+                    important:
+                      type: boolean
+                      nullable: true
+                    deleted:
+                      type: boolean
+                      nullable: true
+                    labels:
+                      type: array
+                      items:
+                        type: integer
+                  required:
+                  - labels
+          description: ''
+    post:
+      operationId: createTodo
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id001
+              properties:
+                title:
+                  type: string
+                  nullable: true
+                  maxLength: 200
+                notes:
+                  type: string
+                  nullable: true
+                  maxLength: 250
+                startDate:
+                  type: string
+                  format: date
+                  nullable: true
+                dueDate:
+                  type: string
+                  format: date
+                  nullable: true
+                completed:
+                  type: boolean
+                  nullable: true
+                starred:
+                  type: boolean
+                  nullable: true
+                important:
+                  type: boolean
+                  nullable: true
+                deleted:
+                  type: boolean
+                  nullable: true
+                labels:
+                  type: array
+                  items:
+                    type: integer
+              required:
+              - labels
+          application/x-www-form-urlencoded:
+            schema: *id001
+          multipart/form-data:
+            schema: *id001
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  title:
+                    type: string
+                    nullable: true
+                    maxLength: 200
+                  notes:
+                    type: string
+                    nullable: true
+                    maxLength: 250
+                  startDate:
+                    type: string
+                    format: date
+                    nullable: true
+                  dueDate:
+                    type: string
+                    format: date
+                    nullable: true
+                  completed:
+                    type: boolean
+                    nullable: true
+                  starred:
+                    type: boolean
+                    nullable: true
+                  important:
+                    type: boolean
+                    nullable: true
+                  deleted:
+                    type: boolean
+                    nullable: true
+                  labels:
+                    type: array
+                    items:
+                      type: integer
+                required:
+                - labels
+          description: ''
+  /api/v1/{id}/:
+    get:
+      operationId: retrieveTodo
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this todo.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  title:
+                    type: string
+                    nullable: true
+                    maxLength: 200
+                  notes:
+                    type: string
+                    nullable: true
+                    maxLength: 250
+                  startDate:
+                    type: string
+                    format: date
+                    nullable: true
+                  dueDate:
+                    type: string
+                    format: date
+                    nullable: true
+                  completed:
+                    type: boolean
+                    nullable: true
+                  starred:
+                    type: boolean
+                    nullable: true
+                  important:
+                    type: boolean
+                    nullable: true
+                  deleted:
+                    type: boolean
+                    nullable: true
+                  labels:
+                    type: array
+                    items:
+                      type: integer
+                required:
+                - labels
+          description: ''
+    put:
+      operationId: updateTodo
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this todo.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id002
+              properties:
+                title:
+                  type: string
+                  nullable: true
+                  maxLength: 200
+                notes:
+                  type: string
+                  nullable: true
+                  maxLength: 250
+                startDate:
+                  type: string
+                  format: date
+                  nullable: true
+                dueDate:
+                  type: string
+                  format: date
+                  nullable: true
+                completed:
+                  type: boolean
+                  nullable: true
+                starred:
+                  type: boolean
+                  nullable: true
+                important:
+                  type: boolean
+                  nullable: true
+                deleted:
+                  type: boolean
+                  nullable: true
+                labels:
+                  type: array
+                  items:
+                    type: integer
+              required:
+              - labels
+          application/x-www-form-urlencoded:
+            schema: *id002
+          multipart/form-data:
+            schema: *id002
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  title:
+                    type: string
+                    nullable: true
+                    maxLength: 200
+                  notes:
+                    type: string
+                    nullable: true
+                    maxLength: 250
+                  startDate:
+                    type: string
+                    format: date
+                    nullable: true
+                  dueDate:
+                    type: string
+                    format: date
+                    nullable: true
+                  completed:
+                    type: boolean
+                    nullable: true
+                  starred:
+                    type: boolean
+                    nullable: true
+                  important:
+                    type: boolean
+                    nullable: true
+                  deleted:
+                    type: boolean
+                    nullable: true
+                  labels:
+                    type: array
+                    items:
+                      type: integer
+                required:
+                - labels
+          description: ''
+    patch:
+      operationId: partial_updateTodo
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this todo.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id003
+              properties:
+                title:
+                  type: string
+                  nullable: true
+                  maxLength: 200
+                notes:
+                  type: string
+                  nullable: true
+                  maxLength: 250
+                startDate:
+                  type: string
+                  format: date
+                  nullable: true
+                dueDate:
+                  type: string
+                  format: date
+                  nullable: true
+                completed:
+                  type: boolean
+                  nullable: true
+                starred:
+                  type: boolean
+                  nullable: true
+                important:
+                  type: boolean
+                  nullable: true
+                deleted:
+                  type: boolean
+                  nullable: true
+                labels:
+                  type: array
+                  items:
+                    type: integer
+          application/x-www-form-urlencoded:
+            schema: *id003
+          multipart/form-data:
+            schema: *id003
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  title:
+                    type: string
+                    nullable: true
+                    maxLength: 200
+                  notes:
+                    type: string
+                    nullable: true
+                    maxLength: 250
+                  startDate:
+                    type: string
+                    format: date
+                    nullable: true
+                  dueDate:
+                    type: string
+                    format: date
+                    nullable: true
+                  completed:
+                    type: boolean
+                    nullable: true
+                  starred:
+                    type: boolean
+                    nullable: true
+                  important:
+                    type: boolean
+                    nullable: true
+                  deleted:
+                    type: boolean
+                    nullable: true
+                  labels:
+                    type: array
+                    items:
+                      type: integer
+                required:
+                - labels
+          description: ''
+    delete:
+      operationId: destroyTodo
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this todo.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+  /api/v1/labels/:
+    get:
+      operationId: listTodos
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    title:
+                      type: string
+                      nullable: true
+                      maxLength: 20
+                    handle:
+                      type: string
+                      nullable: true
+                      maxLength: 20
+                    color:
+                      type: string
+                      nullable: true
+                      maxLength: 20
+          description: ''
+    post:
+      operationId: createTodo
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id004
+              properties:
+                title:
+                  type: string
+                  nullable: true
+                  maxLength: 20
+                handle:
+                  type: string
+                  nullable: true
+                  maxLength: 20
+                color:
+                  type: string
+                  nullable: true
+                  maxLength: 20
+          application/x-www-form-urlencoded:
+            schema: *id004
+          multipart/form-data:
+            schema: *id004
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  title:
+                    type: string
+                    nullable: true
+                    maxLength: 20
+                  handle:
+                    type: string
+                    nullable: true
+                    maxLength: 20
+                  color:
+                    type: string
+                    nullable: true
+                    maxLength: 20
+          description: ''
+  /api/v1/labels/{id}/:
+    get:
+      operationId: retrieveTodo
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this todo.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  title:
+                    type: string
+                    nullable: true
+                    maxLength: 20
+                  handle:
+                    type: string
+                    nullable: true
+                    maxLength: 20
+                  color:
+                    type: string
+                    nullable: true
+                    maxLength: 20
+          description: ''
+    put:
+      operationId: updateTodo
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this todo.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id005
+              properties:
+                title:
+                  type: string
+                  nullable: true
+                  maxLength: 20
+                handle:
+                  type: string
+                  nullable: true
+                  maxLength: 20
+                color:
+                  type: string
+                  nullable: true
+                  maxLength: 20
+          application/x-www-form-urlencoded:
+            schema: *id005
+          multipart/form-data:
+            schema: *id005
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  title:
+                    type: string
+                    nullable: true
+                    maxLength: 20
+                  handle:
+                    type: string
+                    nullable: true
+                    maxLength: 20
+                  color:
+                    type: string
+                    nullable: true
+                    maxLength: 20
+          description: ''
+    patch:
+      operationId: partial_updateTodo
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this todo.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id006
+              properties:
+                title:
+                  type: string
+                  nullable: true
+                  maxLength: 20
+                handle:
+                  type: string
+                  nullable: true
+                  maxLength: 20
+                color:
+                  type: string
+                  nullable: true
+                  maxLength: 20
+          application/x-www-form-urlencoded:
+            schema: *id006
+          multipart/form-data:
+            schema: *id006
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  title:
+                    type: string
+                    nullable: true
+                    maxLength: 20
+                  handle:
+                    type: string
+                    nullable: true
+                    maxLength: 20
+                  color:
+                    type: string
+                    nullable: true
+                    maxLength: 20
+          description: ''
+    delete:
+      operationId: destroyTodo
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this todo.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''

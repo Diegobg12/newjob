@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     #3rd party
     'rest_framework',
     'corsheaders',
+    'drf_yasg',
 ]
 
 REST_FRAMEWORK = {
@@ -61,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware', #Allow header
 ]
 
 CORS_ORIGIN_WHITELIST = ('http://localhost:3000', 'http://localhost:8000')

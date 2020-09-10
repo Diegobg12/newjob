@@ -1,14 +1,14 @@
 from django.shortcuts import render
-from rest_framework import generics
+from rest_framework import generics, permissions, viewsets
 from .models import *
 from .serializers import *
 
 # Create your views here.
 
-class ListTodo(generics.ListAPIView):
+class ListTodoSet(viewsets.ModelViewSet):
     queryset = Todo.objects.all()
     serializer_class = TodoSerializer
 
-class DetailTodo(generics.RetrieveAPIView):
+class LabelSet(viewsets.ModelViewSet):
     queryset = Todo.objects.all()
-    serializer_class = TodoSerializer
+    serializer_class = LablesSerializes

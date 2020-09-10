@@ -11,6 +11,9 @@ psycopg2-binary = "*"
 environs = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
+pyyaml = "*"
+uritemplate = "*"
+drf-yasg = "*"
 
 [requires]
 python_version = "3.7"
