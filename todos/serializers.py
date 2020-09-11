@@ -14,7 +14,9 @@ class TodoSerializer(serializers.ModelSerializer):
             'starred', 
             'important',
             'deleted',
-            'labels')
+            'labels',
+            'author')
+        read_only_fields = ('author',)
 
 class LablesSerializes(serializers.ModelSerializer):
     class Meta:
