@@ -4,19 +4,8 @@ from .models import *
 class TodoSerializer(serializers.ModelSerializer):
     class Meta:
         model= Todo
-        fields = (
-            'id', 
-            'title', 
-            'notes', 
-            'startDate', 
-            'dueDate', 
-            'completed', 
-            'starred', 
-            'important',
-            'deleted',
-            'labels',
-            'author')
-        read_only_fields = ('author',)
+        fields = ('__all__')
+        read_only_fields = ('startDate',)
 
 class LablesSerializes(serializers.ModelSerializer):
     class Meta:
